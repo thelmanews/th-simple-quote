@@ -1,7 +1,7 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../th-theme/th-theme.html">
 
-<polymer-element name="th-simple-quote" attributes="width title details color" noscript>
+<polymer-element name="th-simple-quote" attributes="width title details color textColor" noscript>
   <template>
       <core-style ref="theme"></core-style>
       <style>
@@ -35,7 +35,7 @@
           }
           
       </style>
-      <div id="container" style="width: {{width}}px;">
+      <div id="container" style="width: {{width}}px; color:{{textColor}}">
           
           <div id="quotes" class="data0" style="fill: {{color || ''}}; stroke: {{color || ''}};">
             <svg  style="height: 100%"x="0px" y="0px"  viewBox="20 20 60 50" enable- xml:space="preserve">
