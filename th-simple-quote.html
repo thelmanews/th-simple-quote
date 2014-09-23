@@ -1,11 +1,11 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../th-theme/th-theme.html">
 
-<polymer-element name="th-simple-quote" attributes="width title details color textColor" noscript>
+<polymer-element name="th-simple-quote" attributes="width title details color textColor endQuotes" noscript>
   <template>
       <core-style ref="theme"></core-style>
       <style>
-          #quotes {
+          #quotes, #endquotes {
             width: 50px;
             /*height: 100%; */
             position: relative;
@@ -14,11 +14,18 @@
             padding-right: 5px; /* space btw quotation marks and content */
             box-sizing: border-box;
           }
+          #endquotes {
+            position: absolute;
+            bottom: -10px;
+            right: 0px;
+          }
 
           .content {
             display: inline-block;
-            float: right;
+            float: left;
             padding-top: 25px;
+            padding-right: 20px;
+            box-sizing: border-box;
             /*height: 100%; */
             
           }
@@ -50,6 +57,17 @@
             <content></content>
             <p class="quotetitle" >{{title}}<template if="{{details}}">, {{details}}</template></p>
           </div>
+
+          <template if="{{endQuotes}}">
+            <div id="endquotes" class="data0" style="fill: {{color || ''}}; stroke: {{color || ''}};">
+              <svg  style="height: 100%"x="0px" y="0px"  viewBox="20 20 60 50" enable- xml:space="preserve">
+                <g i:extraneous="self">
+                  <path d="M76.729,44.54c0.005-0.138,0.021-0.273,0.021-0.413c0-0.047-0.007-0.092-0.007-0.138c0.001-0.092,0.007-0.183,0.007-0.275    l-0.021,0.014c-0.212-6.166-5.265-11.103-11.481-11.103c-6.353,0-11.502,5.149-11.502,11.502c0,5.796,4.292,10.577,9.869,11.372    c-1.387,4.595-5.646,7.938-10.695,7.938v4.106C65.813,67.542,76.293,57.325,76.729,44.54z"/>
+                  <path d="M46.893,44.54c0.005-0.138,0.021-0.273,0.021-0.413c0-0.047-0.007-0.092-0.007-0.138c0.001-0.092,0.007-0.183,0.007-0.275    l-0.021,0.014c-0.212-6.166-5.265-11.103-11.481-11.103c-6.353,0-11.502,5.149-11.502,11.502c0,5.796,4.292,10.577,9.869,11.372    c-1.386,4.595-5.645,7.938-10.694,7.938v4.106C35.978,67.542,46.456,57.325,46.893,44.54z"/>
+                </g>
+              </svg>
+            </div>
+          </template>
       </div>
     
   </template>
@@ -57,6 +75,7 @@
 
       Polymer('th-simple-quote', {
         title: '',
+        endQuotes: false
       });
 
   </script>
