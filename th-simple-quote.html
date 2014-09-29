@@ -1,7 +1,7 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../th-theme/th-theme.html">
 
-<polymer-element name="th-simple-quote" attributes="width details color textColor endQuotes">
+<polymer-element name="th-simple-quote" attributes="width details qtitle color textColor endQuotes">
   <template>
       <core-style ref="theme"></core-style>
       <style>
@@ -55,7 +55,7 @@
 
           <div class="content mainpoint" style="width: {{width - 50}}px;">
             <content></content>
-            <p class="quotetitle" >{{title}}<template if="{{details}}">, {{details}}</template></p>
+            <p class="quotetitle" >{{qtitle}}<template if="{{details}}">, {{details}}</template></p>
           </div>
 
           <template if="{{endQuotes}}">
@@ -74,7 +74,6 @@
   <script>
 
       Polymer('th-simple-quote', {
-        title: '',
         endQuotes: false
       });
 
