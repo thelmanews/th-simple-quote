@@ -1,7 +1,8 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../th-theme/th-theme.html">
+<link rel="import" href="../th-animated/th-animated.html">
 
-<polymer-element name="th-simple-quote" attributes="width details qtitle color textColor endQuotes">
+<polymer-element name="th-simple-quote" extends="th-animated" attributes="width details qtitle color textColor endQuotes">
   <template>
       <core-style ref="theme"></core-style>
       <style>
@@ -42,7 +43,7 @@
           }
           
       </style>
-      <div id="container" style="width: {{width}}px; color:{{textColor}}">
+      <div id="container" style="width: {{computedWidth}}px; color:{{textColor}}">
           
           <div id="quotes" class="data0" style="fill: {{color || ''}}; stroke: {{color || ''}};">
             <svg  style="height: 100%"x="0px" y="0px"  viewBox="20 20 60 50" enable- xml:space="preserve">
@@ -53,7 +54,7 @@
             </svg>
           </div>
 
-          <div class="content mainpoint" style="width: {{width - 50}}px;">
+          <div class="content mainpoint" style="width: {{computedWidth - 50}}px;">
             <content></content>
             <p class="quotetitle" >{{qtitle}}<template if="{{details}}">, {{details}}</template></p>
           </div>
@@ -74,7 +75,12 @@
   <script>
 
       Polymer('th-simple-quote', {
-        endQuotes: false
+        endQuotes: false,
+        ready: function(){
+          var self = this;
+          self.computedWidth = self.computeWidth(self.width);
+          self.computedHeight = self.computeHeight(self.height);
+        }
       });
 
   </script>
