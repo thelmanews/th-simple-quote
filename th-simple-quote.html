@@ -1,48 +1,49 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../th-animated/th-animated.html">
 
-<polymer-element name="th-simple-quote" extends="th-animated" attributes="width details qtitle color textColor endQuotes">
+<polymer-element name="th-simple-quote" extends="th-animated" attributes="details qtitle color textColor endQuotes">
   <template>
       <core-style ref="theme"></core-style>
       <style>
-          #quotes, #endquotes {
-            width: 50px;
-            /*height: 100%; */
-            position: relative;
-            display: inline-block;
-            float: left;
-            padding-right: 5px; /* space btw quotation marks and content */
-            box-sizing: border-box;
-          }
-          #endquotes {
-            position: absolute;
-            bottom: 0px;
-            right: 0px;
-          }
+        :host {
+          width: 300px;
+        }
+        #quotes, #endquotes {
+          width: 50px;
+          /*height: 100%; */
+          position: relative;
+          display: inline-block;
+          float: left;
+          padding-right: 5px; /* space btw quotation marks and content */
+          box-sizing: border-box;
+        }
+        #endquotes {
+          position: absolute;
+          bottom: 0px;
+          right: 0px;
+        }
 
-          .content {
-            display: inline-block;
-            float: left;
-            padding-top: 25px;
-            padding-right: 20px;
-            box-sizing: border-box;
-            /*height: 100%; */
-            
-          }
+        .content {
+          display: inline-block;
+          float: left;
+          padding-top: 25px;
+          padding-right: 20px;
+          box-sizing: border-box;          
+        }
 
-          .quotetitle {
-            -webkit-margin-before: 0em;
-            -webkit-margin-after: 0em;
-            -webkit-margin-start: 0px;
-            -webkit-margin-end: 0px;
-            display: block;
-            padding-top: 10px;
-            font-style: italic;
-            font-size: 0.8em;
-          }
+        .quotetitle {
+          -webkit-margin-before: 0em;
+          -webkit-margin-after: 0em;
+          -webkit-margin-start: 0px;
+          -webkit-margin-end: 0px;
+          display: block;
+          padding-top: 10px;
+          font-style: italic;
+          font-size: 0.8em;
+        }
           
       </style>
-      <div id="container" style="width: {{computedWidth}}px; color:{{textColor}}">
+      <div id="container" style="color:{{textColor}}">
           
           <div id="quotes" class="data0" style="fill: {{color || ''}}; stroke: {{color || ''}};">
             <svg  style="height: 100%"x="0px" y="0px"  viewBox="20 20 60 50" enable- xml:space="preserve">
@@ -77,8 +78,7 @@
         endQuotes: false,
         ready: function(){
           var self = this;
-          self.computedWidth = self.computeWidth(self.width);
-          self.computedHeight = self.computeHeight(self.height);
+          self.computedWidth = self.computeWidth();
         }
       });
 
