@@ -1,7 +1,8 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../th-animated/th-animated.html">
+<link rel="import" href="../th-text/th-text.html">
 
-<polymer-element name="th-simple-quote" extends="th-animated" attributes="details qtitle color textColor endQuotes">
+<polymer-element name="th-simple-quote" extends="th-animated" attributes="details qtitle color textColor endQuotes markdown">
   <template>
       <core-style ref="theme"></core-style>
       <style>
@@ -37,13 +38,16 @@
           -webkit-margin-end: 0px;
           display: block;
           padding-top: 10px;
+          padding-left: 5px;
           font-style: italic;
           font-size: 0.8em;
         }
+
           
       </style>
       <div id="container" style="color:{{textColor}}; display: flex; display: -webkit-flex;flex-wrap: wrap; flex-direction: row; -webkit-flex-wrap: wrap; -webkit-flex-direction: row; ">
           
+          <!-- Open Quote SVG -->
           <div id="quotes" class="data0" style="display:inline-block; fill: {{color || ''}}; stroke: {{color || ''}};">
             <svg  style="width: 100%" x="0px" y="0px"  viewBox="20 20 60 50" enable- xml:space="preserve">
               <g i:extraneous="self">
@@ -53,11 +57,13 @@
             </svg>
           </div>
 
-          <div class="content mainpoint" style="flex-grow: 1; flex: 1; -webkit-flex-grow: 1; -webkit-flex: 1; display: inline-block; min-width: 50%;">
-            <content></content>
+          <!-- Quote itself -->
+          <div class="content" style="flex-grow: 1; flex: 1; -webkit-flex-grow: 1; -webkit-flex: 1; display: inline-block; min-width: 50%;">
+            <th-text type="mainpoint" markdown="{{markdown}}"> {{textContent}} </th-text>
             <p class="quotetitle" >{{qtitle}}<template if="{{details}}">, {{details}}</template></p>
           </div>
 
+          <!-- Optional End Quote SVG -->
           <template if="{{endQuotes}}">
             <div id="endquotes" class="data0" style="fill: {{color || ''}}; stroke: {{color || ''}};">
               <svg  style="width: 100%"x="0px" y="0px"  viewBox="20 20 60 50" enable- xml:space="preserve">
@@ -74,7 +80,8 @@
   <script>
 
       Polymer('th-simple-quote', {
-        endQuotes: false
+        endQuotes: false,
+        markdown: true
       });
 
   </script>
