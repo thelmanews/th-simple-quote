@@ -5,6 +5,7 @@
   "main": "th-simple-quote.html",
   "dependencies": {
     "polymer": "Polymer/polymer#~0.5.1",
-    "th-animated": "https://github.com/thelmanews/th-animated.git"
+    "th-animated": "https://github.com/thelmanews/th-animated.git",
+    "th-text": "thelmanews/th-text"
   }
 }
